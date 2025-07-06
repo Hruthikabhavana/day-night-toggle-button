@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day Night Toggle</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #fff;
+      margin: 0;
+    }
+
+    .container {
+      width: 400px;
+      height: 200px;
+      background-color: #e0e0e0;
+      border-radius: 300px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      transition: background-image 0.5s ease;
+    
+    }
+
+    .slider {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      border: 5px solid white; 
+      position: absolute;
+      top: 27px;
+      left: 10px;
+      transition: left 0.4s ease;
+       background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    .container.day {
+      background-image: url('https://tse2.mm.bing.net/th/id/OIP.i4IZJp4U38s_HrxeGhiNlAHaEo?pid=Api&P=0&h=180');
+    }
+
+    .container.night {
+      background-image: url('https://wallpapers.com/images/hd/dark-night-moon-hiding-in-clouds-80kcxoa2szb17vmq.jpg');
+    }
+    .slider.day {
+      background-image: url('https://tse2.mm.bing.net/th/id/OIP.i4IZJp4U38s_HrxeGhiNlAHaEo?pid=Api&P=0&h=180');
+    }
+
+    .slider.night {
+      background-image: url('https://wallpapers.com/images/hd/dark-night-moon-hiding-in-clouds-80kcxoa2szb17vmq.jpg');
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container day" id="container">
+    <div class="slider" id="slider"></div>
+  </div>
+
+  <script>
+    const container = document.getElementById("container");
+    const slider = document.getElementById("slider");
+
+    let isNight = false;
+
+    container.addEventListener("click", () => {
+      isNight = !isNight;
+
+      // Move the slider
+      slider.style.left = isNight ? "245px" : "10px";
+
+      // Toggle background image class
+      container.classList.toggle("night", isNight);
+      container.classList.toggle("day", !isNight);
+      slider.classList.toggle("night", isNight);
+      slider.classList.toggle("day", !isNight);
+    });
+  </script>
+</body>
+</html>
